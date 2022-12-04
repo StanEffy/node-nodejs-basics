@@ -1,17 +1,13 @@
-const path = require('path');
-const { release, version } = require('os');
-const { createServer: createServerHttp } = require('http');
-require('./files/c');
+import path from "path"
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
+import {read} from "./readFIle.js";
 
 const random = Math.random();
 
-let unknownObject;
+const unknownObject = random > 0.5 ? await read("./files/a.json") : await read("./files/b.json");
 
-if (random > 0.5) {
-    unknownObject = require('./files/a.json');
-} else {
-    unknownObject = require('./files/b.json');
-}
+console.log(unknownObject)
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
