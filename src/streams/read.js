@@ -7,11 +7,11 @@ const read = async () => {
 
     let data = "";
     readerStream.on('data', function(chunk) {
-        data += chunk;
+        process.stdout.write(data + chunk);
     });
 
     readerStream.on('end',function() {
-        console.log(data);
+        process.stdout.write(data);
     });
 
     readerStream.on('error', function(err) {
