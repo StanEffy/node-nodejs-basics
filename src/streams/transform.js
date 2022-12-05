@@ -2,9 +2,9 @@ import { Transform } from 'stream';
 
 const transform = async () => {
     const transformStream = new Transform({
-        transform(chunk, encoding, callback) {
+        transform(chunk, encoding, cb) {
             const reversed = chunk.toString().split('').reverse().join('');
-            callback(null, reversed);
+            cb(null, reversed);
         }
     });
 
